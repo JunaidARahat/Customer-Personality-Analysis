@@ -2,6 +2,9 @@ import sys
 from customer_personality.components.data_ingestion import DataIngestion
 from customer_personality.components.data_validation import DataValidation
 from customer_personality.components.data_transformation import DataTransformation
+from customer_personality.components.model_trainer import ModelTrainer
+
+
 
 
 from customer_personality.exception import AppException
@@ -13,6 +16,7 @@ class TrainingPipeline:
             self.data_ingestion = DataIngestion()
             self.data_validation = DataValidation()
             self.data_transformation=DataTransformation()
+            self.model_trainer=ModelTrainer()
             
         except Exception as e:
             raise AppException(e, sys) from e
@@ -27,6 +31,7 @@ class TrainingPipeline:
             self.data_ingestion.initiate_data_ingestion()
             self.data_validation.initiate_data_validation()
             self.data_transformation.initiate_data_transformation()
+            self.model_trainer.initiate_model_trainer()
 
             
         except Exception as e:
